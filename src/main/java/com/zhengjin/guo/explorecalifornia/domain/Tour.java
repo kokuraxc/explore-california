@@ -50,9 +50,8 @@ public class Tour {
     @Enumerated
     private Region region;
 
-    public Tour(Integer id, String title, String description, String blurb, Integer price, String duration,
-            String bullets, String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
-        this.id = id;
+    public Tour(String title, String description, String blurb, Integer price, String duration, String bullets,
+            String keywords, TourPackage tourPackage, Difficulty difficulty, Region region) {
         this.title = title;
         this.description = description;
         this.blurb = blurb;
@@ -65,12 +64,11 @@ public class Tour {
         this.region = region;
     }
 
-    public Integer getId() {
-        return id;
+    protected Tour() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -182,6 +180,7 @@ public class Tour {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, blurb, price, duration, bullets, keywords, tourPackage, difficulty, region);
+        return Objects.hash(id, title, description, blurb, price, duration, bullets, keywords, tourPackage, difficulty,
+                region);
     }
 }
