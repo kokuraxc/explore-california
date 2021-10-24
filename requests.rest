@@ -1,0 +1,49 @@
+GET http://localhost:8080/tourPackages
+
+###
+
+POST http://localhost:8080/tourPackages
+Content-Type: application/json
+
+{
+    "code": "ZC",
+    "name": "Zany Cali"
+}
+
+###
+
+GET http://localhost:8080/tourPackages/ZC
+
+###
+
+PUT http://localhost:8080/tourPackages/ZC
+Content-Type: application/json
+
+{
+    "code": "ZC",
+    "name": "California Zoos"
+}
+
+###
+
+DELETE http://localhost:8080/tourPackages/ZC
+
+###
+
+DELETE http://localhost:8080/tourPackages/BC
+
+
+###
+GET http://localhost:8080/tourPackages/search
+
+###
+GET http://localhost:8080/tourPackages/search/findByName?name=Backpack%20Cal
+
+###
+GET http://localhost:8080/tours/search
+
+###
+GET http://localhost:8080/tours/search/findByTourPackageCode?code=BC&size=3&sort=title,asc
+
+###
+GET http://localhost:8080/tours?size=3&page=1&sort=title,asc
