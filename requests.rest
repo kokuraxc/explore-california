@@ -43,4 +43,7 @@ GET http://localhost:8080/tourPackages/search/findByName?name=Backpack%20Cal
 GET http://localhost:8080/tours/search
 
 ###
-GET http://localhost:8080/tours/search/findByTourPackageCode?code=BC
+GET http://localhost:8080/tours/search/findByTourPackageCode?code=BC&size=3&sort=title,asc
+
+###
+GET http://localhost:8080/tours?size=3&page=1&sort=title,asc

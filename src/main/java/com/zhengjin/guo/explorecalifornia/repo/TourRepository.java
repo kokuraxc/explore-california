@@ -1,11 +1,11 @@
 package com.zhengjin.guo.explorecalifornia.repo;
 
-import java.util.List;
-
 import com.zhengjin.guo.explorecalifornia.domain.Tour;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface TourRepository extends CrudRepository<Tour, Integer> {
-    List<Tour> findByTourPackageCode(String code);
+public interface TourRepository extends PagingAndSortingRepository<Tour, Integer> {
+    Page<Tour> findByTourPackageCode(String code, Pageable pageable);
 }
