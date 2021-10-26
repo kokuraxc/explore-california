@@ -74,10 +74,13 @@ POST http://localhost:8080/tours/1/ratings
 Content-Type: application/json
 
 {
-    "score": 49,
+    "score": 1,
     "comment": "I like it, not.",
-    "customerId": 8
+    "customerId": 18
 }
 
 ###
 GET http://localhost:8080/tours/1/ratings
+
+###
+GET http://localhost:8080/tours/1/ratings/average

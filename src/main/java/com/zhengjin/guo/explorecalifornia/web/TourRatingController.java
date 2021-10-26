@@ -1,6 +1,9 @@
 package com.zhengjin.guo.explorecalifornia.web;
 
+import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -13,6 +16,7 @@ import com.zhengjin.guo.explorecalifornia.repo.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +42,19 @@ public class TourRatingController {
         Tour tour = verifyTour(tourId);
         tourRatingRepository.save(new TourRating(new TourRatingPk(tour, ratingDto.getCustomerId()),
                 ratingDto.getScore(), ratingDto.getComment()));
+    }
+
+    @GetMapping
+    public List<RatingDto> getAlllRatingsForTour(@PathVariable(value = "tourId") int tourId) {
+        verifyTour(tourId);
+        return tourRatingRepository.findByPkTourId(tourId).stream().map(RatingDto::new).collect(Collectors.toList());
+    }
+
+    @GetMapping(path = "/average")
+    public Map<String, Double> getAverage(@PathVariable(value = "tourId") int tourId) {
+        verifyTour(tourId);
+        return Map.of("average", tourRatingRepository.findByPkTourId(tourId).stream().mapToInt(TourRating::getScore)
+                .average().orElseThrow(() -> new NoSuchElementException("Tour has no ratings")));
     }
 
     private Tour verifyTour(int tourId) throws NoSuchElementException {
