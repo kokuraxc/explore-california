@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TourPackageService {
-    private final TourPackageRepository tourPackageRepository;
+    private TourPackageRepository tourPackageRepository;
 
     @Autowired
     public TourPackageService(TourPackageRepository tourPackageRepository) {
