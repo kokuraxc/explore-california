@@ -84,3 +84,25 @@ GET http://localhost:8080/tours/1/ratings
 
 ###
 GET http://localhost:8080/tours/1/ratings/average
+
+###
+PUT http://localhost:8080/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 5,
+    "comment": "I like it a lot.",
+    "customerId": 18
+}
+
+###
+PATCH http://localhost:8080/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 5,
+    "customerId": 18
+}
+
+###
+DELETE http://localhost:8080/tours/1/ratings/18
