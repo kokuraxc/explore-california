@@ -40,10 +40,69 @@ GET http://localhost:8080/tourPackages/search
 GET http://localhost:8080/tourPackages/search/findByName?name=Backpack%20Cal
 
 ###
-GET http://localhost:8080/tours/search
+GET http://localhost:8080/tours
 
 ###
 GET http://localhost:8080/tours/search/findByTourPackageCode?code=BC&size=3&sort=title,asc
 
 ###
 GET http://localhost:8080/tours?size=3&page=1&sort=title,asc
+
+###
+POST http://localhost:8080/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 2,
+    "comment": "I like it, not.",
+    "customerId": 3
+}
+
+###
+
+POST http://localhost:8080/tours/123456/ratings
+Content-Type: application/json
+
+{
+    "score": 2,
+    "comment": "I like it, not.",
+    "customerId": 3
+}
+
+###
+POST http://localhost:8080/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 3,
+    "comment": "I like it, not.",
+    "customerId": 3
+}
+
+###
+GET http://localhost:8080/tours/1/ratings?sort=-,desc&size=3&page=1
+
+###
+GET http://localhost:8080/tours/1/ratings/average
+
+###
+PUT http://localhost:8080/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 5,
+    "comment": "I like it a lot.",
+    "customerId": 18
+}
+
+###
+PATCH http://localhost:8080/tours/1/ratings
+Content-Type: application/json
+
+{
+    "score": 5,
+    "customerId": 18
+}
+
+###
+DELETE http://localhost:8080/tours/1/ratings/18
